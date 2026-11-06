@@ -5,16 +5,17 @@ import { Check, ChevronsDown, Gift, Minus, Plus, ShieldCheck, X } from "lucide-r
 
 const IMG = "/assets";
 // Preço e checkout desta página (cada página tem os seus). OLD_PRICE null = sem preço riscado.
+// Formato "10$": sem separador de milhar, para não parecer mil.
 const CURRENCY = "$";
-const PRICE = "18.900";
-const OLD_PRICE: string | null = "37.800";
+const PRICE = "10";
+const OLD_PRICE: string | null = "20";
 // TODO(Luan): link de checkout desta página ainda não enviado. Enquanto isso o botão leva à oferta.
 const CHECKOUT = "#offer";
 const display = "font-display";
 
-/** "37.800" e "18.900" → 50 (o ponto é separador de milhar). */
+/** "20" e "10" → 50 */
 function discountPercent(from: string, to: string) {
-  const n = (v: string) => Number(v.replace(/\./g, "").replace(",", "."));
+  const n = (v: string) => Number(v.replace(",", "."));
   return Math.round((1 - n(to) / n(from)) * 100);
 }
 
@@ -23,11 +24,15 @@ function discountPercent(from: string, to: string) {
 /* ------------------------------------------------------------------ */
 
 const AUTHOR = "Juliana Duarte";
-const MAIN_PRODUCT = "Guía de Bordado Ruso";
-const MAIN_PRODUCT_FULL = "Guía para aprender Bordado Ruso desde cero";
+const MAIN_PRODUCT = "Curso de Bordado Ruso";
+const MAIN_PRODUCT_FULL = "Curso completo de Bordado Ruso en videoclases, desde cero hasta avanzado";
 const MAIN_MOCKUP = { img: "mockup-principal.png", w: 1200, h: 800 };
 
-const HERO_BULLETS = ["Acceso inmediato por e-mail y WhatsApp", "Más de 100 moldes listos para usar", "Garantía de 14 días"];
+const HERO_BULLETS = [
+  "Videoclases paso a paso, completas desde cero hasta avanzado",
+  "Más de 100 moldes listos para usar",
+  "Acceso inmediato por e-mail y WhatsApp",
+];
 
 // Mesmas peças do carrossel da página de referência.
 const HERO_RESULTS = [
@@ -62,19 +67,20 @@ const IDENTIFIED = [
 
 // Mesma ordem da referência: videos → materiales → moldes → ideas, com mais detalhe em cada etapa.
 const INCLUDES = [
-  "Videos claros paso a paso para aprender Bordado Ruso desde cero, siguiendo cada técnica en orden, desde la primera puntada hasta la terminación.",
-  "Cómo usar la herramienta especial de bordado ruso, para que tus puntadas queden parejas y con relieve desde las primeras piezas.",
+  "Videoclases completas paso a paso, desde cero hasta avanzado: ves cada técnica en video, en orden, desde la primera puntada hasta la terminación.",
+  "Cómo usar la herramienta especial de bordado ruso, mostrado en video de cerca, para que tus puntadas queden parejas y con relieve desde las primeras piezas.",
   "Qué materiales necesitás y dónde comprarlos para gastar muy poco, en tu ciudad o por internet, sin pagar por cosas que no vas a usar.",
   "Más de 100 moldes listos para imprimir: imprimí, transferí a la tela y empezá, sin necesidad de saber dibujar.",
-  "Cómo lograr terminaciones profesionales, para que cada pieza quede prolija y lista para regalar o vender.",
+  "Cómo lograr terminaciones profesionales, paso a paso en video, para que cada pieza quede prolija y lista para regalar o vender.",
   "Ideas para crear cuadros, almohadones, bolsos, souvenirs y piezas personalizadas para regalar, decorar tu casa o vender.",
   "Un Excel de costos para calcular a qué precio vender cada pieza, si decidís convertir este hobby en una fuente de ingresos.",
   "Soporte por WhatsApp con Juliana para resolver tus dudas mientras aprendés.",
-  "Certificado de finalización al completar la guía, para reconocer todo lo que aprendiste.",
-  "Acceso desde el celular, la tablet o la computadora, para aprender a tu ritmo y desde donde quieras.",
+  "Certificado de finalización al completar el curso, para reconocer todo lo que aprendiste.",
+  "Acceso a las videoclases desde el celular, la tablet o la computadora, para aprender a tu ritmo y desde donde quieras.",
 ];
 
 const TRUST_BADGES = [
+  { label: "Videoclases Paso a Paso", icon: null },
   { label: "Garantía de 14 Días", icon: null },
   { label: "Acceso Inmediato", icon: "icone-acesso.png" },
   { label: "Soporte por WhatsApp", icon: "icone-suporte.png" },
@@ -90,7 +96,7 @@ const BONUSES = [
     img: "bono-1-moldes.png",
     w: 1000,
     h: 1000,
-    price: "$9.900",
+    price: "37,90$",
   },
   {
     title: "Guía paso a paso para conseguir los materiales económicos",
@@ -98,7 +104,7 @@ const BONUSES = [
     img: "bono-2-materiales.png",
     w: 1000,
     h: 1000,
-    price: "$8.900",
+    price: "24,90$",
   },
   {
     title: "Excel de Costos: calculá a qué precio vender",
@@ -106,28 +112,28 @@ const BONUSES = [
     img: "bono-3-excel.png",
     w: 1000,
     h: 1000,
-    price: "$6.900",
+    price: "19,90$",
   },
   {
-    title: "Certificado de finalización de la Guía de Bordado Ruso",
-    text: "Recibí tu certificado al completar la formación y reconocé todo lo que aprendiste.",
+    title: "Certificado de finalización del Curso de Bordado Ruso",
+    text: "Recibí tu certificado al completar el curso y reconocé todo lo que aprendiste.",
     img: "bono-4-certificado.jpg",
     w: 1200,
     h: 800,
-    price: "$9.900",
+    price: "14,90$",
   },
 ];
 
 const WHY = [
-  "Un método paso a paso y en orden, para que sepas exactamente qué hacer desde la primera puntada hasta la pieza terminada.",
-  "Videos claros donde ves cada movimiento de cerca, sin teoría que nunca vas a usar.",
+  "Videoclases completas, desde cero hasta avanzado, para que sepas exactamente qué hacer desde la primera puntada hasta la pieza terminada.",
+  "Ves cada movimiento de cerca en video y repetís la clase las veces que quieras, sin teoría que nunca vas a usar.",
   "Más de 100 moldes listos, para que empieces a crear sin saber dibujar.",
   "Una guía de materiales económicos, para empezar sin gastar de más.",
   "Ideas de piezas y un Excel de costos, para que sepas qué hacer y a qué precio venderlo si decidís vender.",
 ];
 
 const FOR_WHOM = [
-  "Quien quiere aprender Bordado Ruso desde cero, sin ninguna experiencia.",
+  "Quien quiere aprender Bordado Ruso desde cero, sin ninguna experiencia, viendo cada paso en video.",
   "Quien cree que necesita saber dibujar para crear piezas lindas.",
   "Quien ya probó con tutoriales sueltos y terminó abandonando.",
   "Quien busca un hobby que también pueda convertirse en una fuente de ingresos.",
@@ -145,7 +151,7 @@ const PROOFS = [
 
 const OFFER_ITEMS = [
   MAIN_PRODUCT_FULL,
-  "Videos prácticos paso a paso",
+  "Videoclases prácticas paso a paso, desde la primera puntada hasta piezas avanzadas",
   `Soporte por WhatsApp con ${AUTHOR.split(" ")[0]} para resolver tus dudas`,
   ...BONUSES.map((b) => `Bono: ${b.title}`),
   "Acceso desde el celular, la tablet o la computadora",
@@ -165,11 +171,20 @@ const FAQ: { q: string; a: ReactNode }[] = [
     ),
   },
   {
+    q: "¿Cómo son las clases?",
+    a: (
+      <>
+        Son <strong>videoclases prácticas y completas</strong>, paso a paso, que empiezan desde cero y avanzan hasta
+        técnicas avanzadas. Ves cada movimiento de cerca y podés repetir cada clase las veces que necesites.
+      </>
+    ),
+  },
+  {
     q: "¿Es un producto físico?",
     a: (
       <>
-        No. Es un <strong>producto digital</strong>: recibís el acceso a los videos, la guía y los bonos después de
-        confirmarse el pago.
+        No. Es un <strong>curso digital en videoclases</strong>: recibís el acceso a las clases y a los bonos después
+        de confirmarse el pago.
       </>
     ),
   },
@@ -177,7 +192,8 @@ const FAQ: { q: string; a: ReactNode }[] = [
     q: "¿Necesito experiencia para empezar?",
     a: (
       <>
-        No. El método fue pensado <strong>para principiantes</strong> y explica la técnica desde cero.
+        No. El curso fue pensado <strong>para principiantes</strong>: son videoclases paso a paso que te llevan desde
+        cero hasta el nivel avanzado.
       </>
     ),
   },
@@ -186,7 +202,7 @@ const FAQ: { q: string; a: ReactNode }[] = [
     a: (
       <>
         No. La herramienta especial para bordado ruso y el resto de los materiales son{" "}
-        <strong>económicos y fáciles de conseguir</strong>. Dentro del método vas a encontrar una guía simple para saber
+        <strong>económicos y fáciles de conseguir</strong>. Dentro del curso vas a encontrar una guía simple para saber
         qué comprar sin gastar de más.
       </>
     ),
@@ -195,7 +211,7 @@ const FAQ: { q: string; a: ReactNode }[] = [
     q: "¿Puedo verlo desde el celular?",
     a: (
       <>
-        Sí. Podés acceder desde <strong>el celular, una tablet o la computadora</strong>.
+        Sí. Podés ver las videoclases desde <strong>el celular, una tablet o la computadora</strong>.
       </>
     ),
   },
@@ -214,7 +230,7 @@ const FAQ: { q: string; a: ReactNode }[] = [
       <>
         ¡Claro!
         <br />
-        Tenés <strong>14 días de garantía incondicional</strong>. Si por cualquier motivo no es lo que esperabas, pedís
+        Tenés <strong>14 días de garantía incondicional</strong>. Mirá las videoclases y, si por cualquier motivo no es lo que esperabas, pedís
         el reembolso total. Sin vueltas y sin preguntas.
       </>
     ),
@@ -374,33 +390,19 @@ export default function BordadoRusoPage() {
       </div>
 
       <main className="flex flex-col pt-11">
-        {/* 1 · HERO: mesma estrutura da referência (autora, headline, subheadline e carrossel de peças) */}
+        {/* 1 · HERO: mesma estrutura da referência (headline, subheadline e carrossel de peças) */}
         <CherrySlab>
           <div className="sp-slab-top pb-4 pt-6 sm:pt-12">
             <Container className="flex flex-col items-center text-center">
-              <span className="sp-author">
-                <Image
-                  src={`${IMG}/juliana-avatar.jpg`}
-                  alt={AUTHOR}
-                  width={240}
-                  height={240}
-                  priority
-                  className="h-11 w-11 rounded-full object-cover"
-                />
-                <span className="flex flex-col leading-tight">
-                  <strong className={`${display} text-[15px] font-extrabold text-sp-ink`}>{AUTHOR}</strong>
-                  <span className="text-xs font-bold text-sp-ink-soft">Especialista en Bordado Ruso</span>
-                </span>
-              </span>
-
-              <h1 className={`${display} sp-hero-title mt-6`}>
+              <h1 className={`${display} sp-hero-title`}>
                 Aprendé Bordado Ruso desde cero y convertí{" "}
                 <span className="sp-hero-accent">este hobby en una nueva fuente de ingresos</span>
               </h1>
 
               <p className="mt-6 text-lg font-medium leading-relaxed text-sp-ink-soft sm:text-xl">
                 Creá piezas con <strong className="font-extrabold text-sp-ink">terminaciones profesionales y listas para vender</strong>,
-                siguiendo <strong className="font-extrabold text-sp-ink">videos paso a paso</strong> y más de{" "}
+                siguiendo <strong className="font-extrabold text-sp-ink">videoclases paso a paso, completas desde cero hasta avanzado,</strong>{" "}
+                y más de{" "}
                 <strong className="font-extrabold text-sp-ink">100 moldes listos para usar</strong>. Empezá sin experiencia, sin
                 saber dibujar y sin necesitar materiales caros.
               </p>
@@ -447,7 +449,7 @@ export default function BordadoRusoPage() {
               ¿Te sentís <Mark on="light">identificado?</Mark>
             </SectionTitle>
             <p className="mt-6 text-center text-lg font-medium leading-relaxed text-sp-ink-soft">
-              Si alguna de estas situaciones te resulta familiar, esta guía es para vos.
+              Si alguna de estas situaciones te resulta familiar, este curso es para vos.
             </p>
 
             <div className="mt-10 flex flex-col gap-5">
@@ -475,7 +477,8 @@ export default function BordadoRusoPage() {
               Mirá todo lo que vas a encontrar <Mark on="light">adentro</Mark>
             </SectionTitle>
             <p className="mt-6 text-center text-lg font-medium leading-relaxed text-sp-ink-soft">
-              Todo lo que necesitás para aprender desde cero y crear tus primeras piezas, aunque nunca hayas bordado.
+              Un curso completo en videoclases paso a paso, desde cero hasta avanzado, para que aprendas y crees tus
+              primeras piezas aunque nunca hayas bordado.
             </p>
 
             <CheckList items={INCLUDES} className="mt-10" />
@@ -527,7 +530,7 @@ export default function BordadoRusoPage() {
             </div>
 
             <p className="mt-10 text-center text-lg font-medium leading-relaxed text-white/95">
-              Además de la guía, te llevás <SoftMark>4 bonos exclusivos</SoftMark> que facilitan cada etapa: moldes para
+              Además del curso en videoclases, te llevás <SoftMark>4 bonos exclusivos</SoftMark> que facilitan cada etapa: moldes para
               empezar sin dibujar, materiales económicos, el cálculo del precio de venta y tu certificado.
             </p>
 
@@ -551,7 +554,7 @@ export default function BordadoRusoPage() {
             </div>
 
             <div className="mt-12 flex justify-center">
-              <CtaButton href="#offer">¡Quiero la guía!</CtaButton>
+              <CtaButton href="#offer">¡Quiero el curso!</CtaButton>
             </div>
           </Container>
         </CherrySlab>
@@ -561,7 +564,7 @@ export default function BordadoRusoPage() {
           <div className="sp-slab-top pt-14">
             <Container>
               <SectionTitle>
-                Por qué la <Mark on="light">{MAIN_PRODUCT}</Mark> va a ser tu paso a paso hasta tus primeras piezas
+                Por qué el <Mark on="light">{MAIN_PRODUCT}</Mark> en videoclases va a ser tu paso a paso hasta tus primeras piezas
               </SectionTitle>
             </Container>
           </div>
@@ -578,7 +581,7 @@ export default function BordadoRusoPage() {
             </div>
 
             <SectionTitle tone="light" className="mt-14">
-              ¿Para quién es la guía?
+              ¿Para quién es el curso?
             </SectionTitle>
 
             <div className="clay-red-card mt-10 rounded-[32px] p-6 sm:p-8">
@@ -635,27 +638,7 @@ export default function BordadoRusoPage() {
           </Container>
         </LightSection>
 
-        {/* 9 · Garantia */}
-        <CherrySlab className="pt-0">
-          <div className="sp-inside-top pt-6" />
-          <Container className="-mt-24 sm:-mt-36 lg:-mt-40">
-            <div className="clay-red-card flex flex-col items-center gap-6 rounded-[48px] px-6 py-10 text-center sm:px-10">
-              <span className="clay-orb inline-flex h-[120px] w-[120px] items-center justify-center rounded-full bg-sp-go text-white">
-                <ShieldCheck className="h-16 w-16" strokeWidth={2.25} />
-              </span>
-              <h2 className={`${display} text-3xl font-black tracking-tight sm:text-4xl sp-title--light`}>GARANTÍA DE 14 DÍAS</h2>
-              <p className="text-lg font-medium leading-relaxed text-white/95">
-                Comprá con total tranquilidad. Después de confirmada la compra, tenés 14 días para ver los videos, revisar
-                cada material y, si sentís que no es lo que esperabas, pedir el reembolso total, sin vueltas.
-              </p>
-              <CtaButton href={CHECKOUT} className="sm:min-w-[320px]">
-                Comprar ahora
-              </CtaButton>
-            </div>
-          </Container>
-        </CherrySlab>
-
-        {/* 10 · Quem sou eu (copy da referência, com a Juliana) */}
+        {/* 9 · Quem sou eu (copy da referência, com a Juliana), acima da garantia */}
         <LightSection>
           <Container>
             <div className="clay-card overflow-hidden rounded-[40px]">
@@ -676,7 +659,7 @@ export default function BordadoRusoPage() {
                 </SectionTitle>
                 <div className="mt-6 flex flex-col gap-4 text-lg font-medium leading-relaxed text-sp-ink-soft">
                   <p>
-                    Cuando empecé, no encontraba una guía que reuniera en un solo lugar los materiales correctos, la técnica
+                    Cuando empecé, no encontraba un curso que reuniera en un solo lugar los materiales correctos, la técnica
                     y las terminaciones. El Bordado Ruso es sencillo, pero sin una explicación clara puede parecer mucho más
                     difícil de lo que realmente es.
                   </p>
@@ -689,12 +672,61 @@ export default function BordadoRusoPage() {
                   <p className={`${display} text-2xl font-black text-sp-ink`}>{AUTHOR}</p>
                   <p className="mt-1 text-sm font-bold text-sp-500">Profesora de bordado ruso y creadora del método</p>
                 </div>
+                <div className="mt-8 flex justify-center">
+                  <CtaButton href={CHECKOUT} className="sm:min-w-[320px]">
+                    ¡Quiero empezar el curso!
+                  </CtaButton>
+                </div>
               </div>
             </div>
           </Container>
         </LightSection>
 
-        {/* 11 · FAQ */}
+        {/* 10 · Garantia */}
+        <CherrySlab className="pt-0">
+          <div className="sp-inside-top pt-6" />
+          <Container className="-mt-24 sm:-mt-36 lg:-mt-40">
+            <div className="clay-red-card flex flex-col items-center gap-6 rounded-[48px] px-6 py-10 text-center sm:px-10">
+              <span className="clay-orb inline-flex h-[120px] w-[120px] items-center justify-center rounded-full bg-sp-go text-white">
+                <ShieldCheck className="h-16 w-16" strokeWidth={2.25} />
+              </span>
+              <h2 className={`${display} text-3xl font-black tracking-tight sm:text-4xl sp-title--light`}>GARANTÍA DE 14 DÍAS</h2>
+              <p className="text-lg font-medium leading-relaxed text-white/95">
+                Comprá con total tranquilidad. Después de confirmada la compra, tenés 14 días para ver las videoclases,
+                revisar cada material y, si sentís que no es lo que esperabas, pedir el reembolso total, sin vueltas.
+              </p>
+              <CtaButton href={CHECKOUT} className="sm:min-w-[320px]">
+                Comprar ahora
+              </CtaButton>
+            </div>
+          </Container>
+        </CherrySlab>
+
+        {/* 11 · Oferta repetida depois da garantia */}
+        <LightSection>
+          <Container>
+            <SectionTitle>
+              ASEGURÁ <Mark on="light">HOY</Mark> TU LUGAR
+            </SectionTitle>
+            <div className="mt-8 flex justify-center">
+              <IconOrb>
+                <ChevronsDown className="h-8 w-8" strokeWidth={3} />
+              </IconOrb>
+            </div>
+
+            <OfferCard
+              badge="🌟 Más Vendido"
+              tier="PAQUETE COMPLETO"
+              items={OFFER_ITEMS}
+              oldPrice={OLD_PRICE}
+              price={PRICE}
+              href={CHECKOUT}
+              className="mt-14"
+            />
+          </Container>
+        </LightSection>
+
+        {/* 12 · FAQ */}
         <LightSection className="pt-0">
           <Container>
             <div className="text-center">
@@ -733,7 +765,7 @@ export default function BordadoRusoPage() {
           </Container>
         </LightSection>
 
-        {/* 12 · Rodapé */}
+        {/* 13 · Rodapé */}
         <footer className="pb-6 text-center text-[13px]">
           <div className="font-medium">
             <a href="link-para-politica.html" className="mx-2.5 text-sp-link hover:underline">
@@ -811,14 +843,14 @@ function OfferCard({
 
           {oldPrice && (
             <p className={`${display} mt-10 text-xl font-extrabold text-white/75 line-through decoration-2`}>
-              DE {CURRENCY}
-              {oldPrice}
+              DE {oldPrice}
+              {CURRENCY}
             </p>
           )}
           <p className={`${display} ${oldPrice ? "mt-1" : "mt-10"} text-2xl font-black tracking-wide`}>SOLO HOY</p>
           <p className={`${display} mt-1 whitespace-nowrap text-7xl font-black leading-none tracking-tight sm:text-8xl`}>
-            <span className="mr-1 align-top text-3xl sm:text-4xl">{CURRENCY}</span>
             {price}
+            <span className="ml-1 align-top text-3xl sm:text-4xl">{CURRENCY}</span>
           </p>
           <p className="mt-6 text-sm font-bold text-white/90">Pago único</p>
 
