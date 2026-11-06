@@ -79,7 +79,6 @@ const INCLUDES = [
 ];
 
 const TRUST_BADGES = [
-  { label: "Videoclases Paso a Paso", icon: null },
   { label: "Garantía de 14 Días", icon: null },
   { label: "Acceso Inmediato", icon: "icone-acesso.png" },
   { label: "Soporte por WhatsApp", icon: "icone-suporte.png" },
