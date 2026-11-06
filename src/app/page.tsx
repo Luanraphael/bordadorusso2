@@ -9,8 +9,7 @@ const IMG = "/assets";
 const CURRENCY = "$";
 const PRICE = "10";
 const OLD_PRICE: string | null = "20";
-// TODO(Luan): link de checkout desta página ainda não enviado. Enquanto isso o botão leva à oferta.
-const CHECKOUT = "#offer";
+const CHECKOUT = "https://pay.hotmart.com/A108376144Q?checkoutMode=10";
 const display = "font-display";
 
 /** "20" e "10" → 50 */
