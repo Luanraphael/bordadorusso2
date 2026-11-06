@@ -609,9 +609,6 @@ export default function BordadoRusoPage() {
               imgClassName="w-[min(78%,340px)]"
             />
           </div>
-          <Container className="mt-8 flex justify-center">
-            <CtaButton href="#offer">¡Yo también quiero empezar!</CtaButton>
-          </Container>
         </LightSection>
 
         {/* 8 · Oferta */}
